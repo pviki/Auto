@@ -79,6 +79,21 @@ namespace AutoSale
             cmd.ExecuteNonQuery();
             conn.Connection.Close();
         }
+
+        public static void feladat4()
+        {
+            int id;
+
+            Console.Write("Kérem az id-t: ");
+            id = int.Parse(Console.ReadLine());
+
+            string sql = $"DELETE FROM `cars` WHERE 1";
+
+            conn.Connection.Open();
+            MySqlCommand cmd = new MySqlCommand(sql, conn.Connection);
+            cmd.ExecuteNonQuery();
+            conn.Connection.Close();
+        }
         static void Main(string[] args)
         {
             feladat1();
@@ -88,6 +103,10 @@ namespace AutoSale
             }
 
             feladat2();
+
+            feladat3();
+
+            feladat4();
 
             Console.ReadLine();
         }
