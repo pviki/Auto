@@ -53,12 +53,30 @@ namespace AutoSale
             Console.Write("Kérem az autó gyártásévét.: ");
             ev =int.Parse( Console.ReadLine());
             string sql = $"INSERT INTO `cars`(`Brand`, `Type`, `License`, `Date`) VALUES ('{marka}','{tipus}','{azon}','{ev}')";
+            conn.Connection.Open();
             MySqlCommand cmd = new MySqlCommand(sql, conn.Connection);
             cmd.ExecuteNonQuery();
-            conn.Connection.Open();
+            
 
             
 
+            conn.Connection.Close();
+        }
+
+        public static void feladat3()
+        {
+            int id, ev;
+            Console.Write("Kérem az autó id-ját: ");
+            id = int.Parse( Console.ReadLine());
+
+            Console.Write("Kérem az autó új gyártásiidejét: ");
+            ev = int.Parse(Console.ReadLine());
+
+            string sql = $"UPDATE `cars` SET `Date`='[value-5]' WHERE `Id` = 1";
+
+            conn.Connection.Open();
+            MySqlCommand cmd = new MySqlCommand (sql, conn.Connection);
+            cmd.ExecuteNonQuery();
             conn.Connection.Close();
         }
         static void Main(string[] args)
