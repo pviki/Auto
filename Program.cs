@@ -46,6 +46,8 @@ namespace AutoSale
             {
                 Console.WriteLine($"Márka: {item.Brand}, Azonosító: {item.License}");
             }
+
+            Console.ReadLine();
         }
     }
 }
