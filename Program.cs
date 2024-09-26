@@ -39,6 +39,28 @@ namespace AutoSale
             
             conn.Connection.Close();
         }
+
+        static void feladat2()
+        {
+            string marka, tipus, azon;
+            int ev;
+            Console.Write("Kérem az autó márkáját.: ");
+            marka = Console.ReadLine();
+            Console.Write("Kérem az autó tipusát.: ");
+            tipus = Console.ReadLine();
+            Console.Write("Kérem az autó motorszámát.: ");
+            azon = Console.ReadLine();
+            Console.Write("Kérem az autó gyártásévét.: ");
+            ev =int.Parse( Console.ReadLine());
+            string sql = $"INSERT INTO `cars`(`Brand`, `Type`, `License`, `Date`) VALUES ('{marka}','{tipus}','{azon}','{ev}')";
+            MySqlCommand cmd = new MySqlCommand(sql, conn.Connection);
+            cmd.ExecuteNonQuery();
+            conn.Connection.Open();
+
+            
+
+            conn.Connection.Close();
+        }
         static void Main(string[] args)
         {
             feladat1();
@@ -46,6 +68,8 @@ namespace AutoSale
             {
                 Console.WriteLine($"Márka: {item.Brand}, Azonosító: {item.License}");
             }
+
+            feladat2();
 
             Console.ReadLine();
         }
